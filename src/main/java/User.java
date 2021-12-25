@@ -11,9 +11,12 @@ public class User {
     private final Boolean  traslado;
     private final String foto;
     private final String cv;
+    private final String pais;
+    private final String ciudad;
 
     Users users = new Users();
     private List<String> lenguajes = new ArrayList();
+
 
 
 
@@ -26,6 +29,8 @@ public class User {
         this.traslado = builder.traslado;
         this.foto = builder.foto;
         this.cv = builder.cv;
+        this.pais = builder.pais;
+        this.ciudad = builder.ciudad;
     }
 
     public String getEmail() {
@@ -65,6 +70,17 @@ public class User {
         return cv;
     }
 
+    public String getPais() {
+        return pais;
+    }
+
+    public String getCiudad()
+    {
+        return ciudad;
+    }
+
+
+
     public List<String> getLenguajes()
     {
         return lenguajes;
@@ -81,6 +97,8 @@ public class User {
                 ", traslado=" + traslado +
                 ", foto='" + foto + '\'' +
                 ", cv='" + cv + '\'' +
+                ", pais='" + pais + '\'' +
+                ", ciudad='" + ciudad + '\'' +
                 '}';
     }
 
@@ -94,6 +112,8 @@ public class User {
         private Boolean  traslado;
         private String foto;
         private String cv;
+        private String pais;
+        private String ciudad;
 
         public UserBuilder(String email, String password) {
             this.email = email;
@@ -139,6 +159,20 @@ public class User {
         public UserBuilder cv(String cv)
         {
             this.cv = cv;
+            return this;
+        }
+
+        public UserBuilder pais(Pais pais)
+        {
+            this.pais = pais.getPais();
+            pais.getUsuarios().add(email);
+            return this;
+        }
+
+        public UserBuilder ciudad(Ciudad ciudad)
+        {
+            this.ciudad = ciudad.getCiudad();
+            ciudad.getUsuarios().add(email);
             return this;
         }
 

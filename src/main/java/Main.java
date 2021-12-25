@@ -3,13 +3,26 @@
 public class Main {
 
     public static void main(String[] args) {
+        Pais pais1 = new Pais("España");
+        Pais pais2 = new Pais("Francia");
+
+        Ciudad madrid = new Ciudad("Madrid",pais1);
+
+
         User user1 = new User.UserBuilder("engaca2001@hotmail.com","palomino")
                 .nombreCompleto("Enrique Gallego Cabrales")
+                .pais(pais1)
                 .builder();
 
         User user2 = new User.UserBuilder("pepe@hotmail.com","casitas")
                 .nombreCompleto("Pepito Flores")
+                .pais(pais1)
+                .ciudad(madrid)
                 .builder();
+
+
+
+
 
         
 
@@ -33,6 +46,17 @@ public class Main {
         System.out.println(user2.getLenguajes());
 
         System.out.println(lenguaje1.getUsuarios());
+
+        System.out.println(user2);
+
+        System.out.println(pais1.getUsuarios());
+        System.out.println(pais2.getUsuarios());
+
+        System.out.println(pais1.getCiudades());
+        System.out.println(pais2.getCiudades());
+
+
+
 
     }
 
